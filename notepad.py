@@ -1,7 +1,9 @@
+# importing modules
 from tkinter import *
 from tkinter.filedialog import askopenfilename,asksaveasfilename
 from manual import manual
 
+# tkinter window basic setup
 root = Tk()
 root.title("Untitled- NOTEPAD")
 root.rowconfigure(0,minsize=750)
@@ -10,6 +12,7 @@ root.configure(bg="light blue")
 photo = PhotoImage(file = "Icon.png")
 root.iconphoto(False, photo)
 
+# all functions for each command
 def save():
 	file_location = asksaveasfilename(
 		defaultextension="txt",
@@ -47,10 +50,12 @@ def paste():
 def undo():
 	text_editor.edit_undo
 
+# creating the place where you write the content of file
 text_editor = Text(root,font="lucida 13",undo=True,wrap="none")
 text_editor.grid(row=0,column=1,sticky="nsew")
 text_editor.configure(bg='light blue')
 
+# scroll bars
 scroll = Scrollbar(text_editor)
 scroll.pack(side=RIGHT,fill=Y)
 scroll.config(command=text_editor.yview)
@@ -61,10 +66,11 @@ scroll1.pack(side=BOTTOM,fill=X)
 scroll1.config(command=text_editor.xview)
 text_editor.config(xscrollcommand=scroll1.set)
 
+# contains all options
 frame= Frame(root,relief=RAISED,bd=3,bg="light grey")
 frame.grid(row=0,column=0,sticky="ns")
 
-
+# all options
 fileoptionlbl = Label(frame,text="FILE OPTIONS")
 fileoptionlbl.grid(column=0,row=0)
 
@@ -97,5 +103,6 @@ pastebtn.grid(column=0,row=7,padx=10,pady=10)
 
 helpbtn = Button(frame,text="HELP",padx=15,pady=10,command=manual)
 helpbtn.grid(column=0,row=8,padx=10,pady=10)
+
 root.mainloop()
 
