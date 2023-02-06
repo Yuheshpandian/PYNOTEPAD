@@ -104,5 +104,6 @@ pastebtn.grid(column=0,row=7,padx=10,pady=10)
 helpbtn = Button(frame,text="HELP",padx=15,pady=10,command=manual)
 helpbtn.grid(column=0,row=8,padx=10,pady=10)
 
-root.mainloop()
+if __name__ == "__main__":
+	root.mainloop()
 
